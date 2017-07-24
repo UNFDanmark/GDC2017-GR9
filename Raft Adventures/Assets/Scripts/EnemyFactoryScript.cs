@@ -6,8 +6,8 @@ public class EnemyFactoryScript : MonoBehaviour {
     public GameObject stone;
 
     public int difficulty;
-    public void getEnemy(){
+    public AbstractEnemy getEnemy(){
         //enemy instantiation and selection logic
-        Instantiate(stone);
+        return Instantiate(stone).GetComponent<AbstractEnemy>();
     }
 }
