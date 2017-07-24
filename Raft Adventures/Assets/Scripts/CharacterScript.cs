@@ -18,9 +18,11 @@ public class CharacterScript : MonoBehaviour
     {
 
     }
-
-    // Update is called once per frame
-    void Update()
+	void OnMouseDown() {
+		print("hi");
+	}
+	// Update is called once per frame
+	void Update()
     {
 
     }
