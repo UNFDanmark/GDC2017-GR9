@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public class EnemyControlScript : MonoBehaviour {
 
-	List<AbstractEnemy> allEnemies = new List<AbstractEnemy>();
+	
     public EnemyFactoryScript factory;
 	public int cooldown = 1;
-	private int lastSpawn = 0;
+	private float lastSpawn = 0;
 
     // Use this for initialization
     void Awake () {
@@ -18,7 +18,10 @@ public class EnemyControlScript : MonoBehaviour {
 	void Update () {
 		if (!(Time.timeSinceLevelLoad - lastSpawn < cooldown)){
 			AbstractEnemy tempEnemy = factory.getEnemy();
-			tempEnemy.Intro(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
+			float posX = Random.Range(-4.5f, 4.5f);
+			float posZ = Random.Range(-4.5f, 4.5f);
+			tempEnemy.Intro(posX,posZ);
+			lastSpawn = Time.timeSinceLevelLoad;
 		}
 	}
 }

@@ -14,6 +14,6 @@ public class StoneHitboxScript : AbstractEnemy {
 	}
 
     public override void Intro(float posX,float posZ){
-        transform.Translate(posX, 20, posZ);
+        transform.position=new Vector3(posX, 20, posZ);
     }
 }
