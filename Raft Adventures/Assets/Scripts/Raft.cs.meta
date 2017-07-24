@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2495714233831f9418e9cf5b4cc01ff8
+timeCreated: 1500837838
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - StoneHitboxPrefab: {fileID: 1000014274525590, guid: 40f374edcbc0fc645bdb2a5822bad34b,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
