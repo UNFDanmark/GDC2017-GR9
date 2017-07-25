@@ -8,6 +8,13 @@ public class Raft : MonoBehaviour {
     private GameObject player;
 	private EnemyFactoryScript factory;
 	public float TipLimit = 5;
+	float[] forces = new float[2];
+	float TotalWeight;
+	public float weightLimit = 10;
+	public float nullifier = 2;
+	public float RotateFactor = 10;
+	public float LoseRotation = 10;
+
     void Awake() {
         player = GameObject.Find("Character"); //gets acess to Character object
 		factory = GameObject.Find("EnemyFactory").GetComponent<EnemyFactoryScript>();
@@ -20,29 +27,50 @@ public class Raft : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float[] forces = calcStability(factory.getAllEnemies());
+		List<GameObject> allEnemies = factory.getAllEnemies();
+		forces = calcStability(allEnemies);
+		TotalWeight = calcLoad(allEnemies);
+		UpdateRotation();
+		UpdatePlaceInWater();
+		checkLose();
+	}
 
-		foreach(float i in forces) {
-			if (Math.Abs(i) > TipLimit) {
-				print("You Lose");
-			}
+	void checkLose() {
+		//print(transform.eulerAngles.x.ToString() + " " + transform.eulerAngles.z.ToString());
+		if (!((360 - LoseRotation < transform.eulerAngles.x || transform.eulerAngles.x < LoseRotation )&&( 360 - LoseRotation < transform.eulerAngles.z || transform.eulerAngles.z < LoseRotation))) {//fuck that
+			print("You Lose");
+		}
+		if (TotalWeight >= weightLimit) {
+			print("You Lose2");
 		}
 	}
 
-	void FixedUpdate() {
-		
+	void UpdateRotation() {
+		float forceX = Math.Abs(forces[0]) > nullifier ? (forces[0] - nullifier * Math.Sign(forces[0])) : 0; //makes sure to substract the nullifier
+		float forceZ = Math.Abs(forces[1]) > nullifier ? (forces[1] - nullifier * Math.Sign(forces[1])) : 0;
+		transform.Rotate(new Vector3(forceZ, 0, -forceX) * Time.deltaTime * (1 / RotateFactor), Space.World );
 	}
 
+	void UpdatePlaceInWater() {
+		Vector3 moveToPoint = new Vector3(transform.position.x, -(TotalWeight / weightLimit) * transform.lossyScale.y/2, transform.position.z);
+		transform.position = Vector3.MoveTowards(transform.position, moveToPoint, 0.05f*Time.deltaTime);
+	}
 	float[] calcStability(List<GameObject> allEnemies) {
 		float forceX = player.GetComponent<Rigidbody>().mass * (player.transform.position.x > 0 ? 1 : -1); //gets 1 if positive and -1 if negative
 		float forceZ = player.GetComponent<Rigidbody>().mass * (player.transform.position.z > 0 ? 1 : -1);
 		foreach (GameObject GO in allEnemies) {
-			//physics rotational mechanisms
-			float mass = GO.GetComponent<Rigidbody>().mass;
+			float mass = GO.GetComponent<AbstractEnemy>().Mass;
 			forceX += mass * (GO.transform.position.x > 0 ? 1 : -1);
 			forceZ += mass * (GO.transform.position.z > 0 ? 1 : -1);
 		}
 		//print(forceX.ToString() + " " + forceZ.ToString());
 		return new float[] { forceX, forceZ };
+	}
+	float calcLoad(List<GameObject> allEnemies) {
+		float tempMass = 0;
+		foreach(GameObject GO in allEnemies) {
+			tempMass +=GO.GetComponent<AbstractEnemy>().Mass;
+		}
+		return tempMass;
 	}
 }

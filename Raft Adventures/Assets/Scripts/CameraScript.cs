@@ -4,9 +4,8 @@ using System.Collections;
 public class CameraScript : MonoBehaviour {
 
 	Camera cam;
-	private Color MouseOverColor = Color.blue;
-	private Color OriginalColor = Color.black;
 	private GameObject selectedGameObject;
+	Rigidbody thisRigidbody;
 	float distance;
 
 	// Use this for initialization
@@ -21,16 +20,25 @@ public class CameraScript : MonoBehaviour {
 			RaycastHit hit;
 			if(Physics.Raycast(ray,out hit,300f,1<<LayerMask.NameToLayer("Enemies"))) {
 				selectedGameObject = hit.transform.gameObject;
-				distance = Vector3.Distance(hit.transform.position, transform.position);
 			}
 		}
-		if (Input.GetMouseButton(0)) {
+		if (Input.GetMouseButtonUp(0)) {
+			selectedGameObject = null;
+		}
+		if (Input.GetMouseButton(0) && selectedGameObject != null) {
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-			//selectedGameObject.transform.position = ray.GetPoint(distance);
 			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit)) {
-				selectedGameObject.transform.position = new Vector3(hit.point.x, 2, hit.point.z);
+			if (Physics.Raycast(ray, out hit, 300f, 1 << LayerMask.NameToLayer("Enemy Height"))) {
+				selectedGameObject.transform.position = hit.point;
+
 			}
 		}
 	}
 }
+
+/*
+ Vector3 getPointVector( Vector3 camPoint, Vector3 hitPoint,float height) {
+		return ((height- camPoint.y) / transform.position.y) * transform.position + camPoint;
+	Vector3 vecline = (selectedGameObject.transform.position - transform.position);
+	selectedGameObject.transform.position = getPointVector(vecline,hit.point, selectedGameObject.transform.lossyScale.y);
+*/

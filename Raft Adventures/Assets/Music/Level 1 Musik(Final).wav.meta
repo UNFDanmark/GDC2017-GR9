@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Raft Adventures/Assets/Music/Level 1 Musik(Final).wav.meta
 guid: 49d4ec56ef72e7d4ab2b934c4082d286
 timeCreated: 1500996270
+=======
+guid: b77578e76732b9e46980557a6c6404f8
+timeCreated: 1500974897
+>>>>>>> 1a7b4e4481baf7b223ae134d88f742db6283f25a:Raft Adventures/Assets/Music/Level 1 Musik(Final).wav.meta
 licenseType: Free
 AudioImporter:
   serializedVersion: 6

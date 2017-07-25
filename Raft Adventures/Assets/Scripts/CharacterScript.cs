@@ -18,9 +18,6 @@ public class CharacterScript : MonoBehaviour
     {
 
     }
-	void OnMouseDown() {
-		print("hi");
-	}
 	// Update is called once per frame
 	void Update()
     {
@@ -33,7 +30,7 @@ public class CharacterScript : MonoBehaviour
     }
     void Move()
     {
-        thisRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0, Input.GetAxis("Vertical") * moveSpeed);//-"vertical" bc goes wrong way
+        thisRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, thisRigidbody.velocity.y, Input.GetAxis("Vertical") * moveSpeed);
     }
 }
 
