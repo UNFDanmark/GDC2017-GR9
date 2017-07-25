@@ -4,8 +4,6 @@ using System.Collections;
 public class CameraScript : MonoBehaviour {
 
 	Camera cam;
-	private Color MouseOverColor = Color.blue;
-	private Color OriginalColor = Color.black;
 	private GameObject selectedGameObject;
 	Rigidbody thisRigidbody;
 	float distance;

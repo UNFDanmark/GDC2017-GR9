@@ -1,0 +1,460 @@
+fileFormatVersion: 2
+guid: cb3322b26332a1b47aa4c06d8f14f476
+timeCreated: 1500997226
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Box005
+    100002: Box006
+    100004: Box007
+    100006: brokenSailPole001
+    100008: Cone001
+    100010: Knast 004
+    100012: Knast 005
+    100014: Knast 006
+    100016: Knast 007
+    100018: Knast 008
+    100020: Knast 009
+    100022: Knast 010
+    100024: Knast 011
+    100026: Knast 012
+    100028: Knast 013
+    100030: Knast 014
+    100032: Knast 015
+    100034: Knast 016
+    100036: Log 008
+    100038: Log 009
+    100040: Log 010
+    100042: Log 011
+    100044: Log 012
+    100046: Log 013
+    100048: Log 014
+    100050: Log 015
+    100052: Log 016
+    100054: Log 017
+    100056: Log 018
+    100058: Log 019
+    100060: Log 020
+    100062: Log 021
+    100064: Log 022
+    100066: Log 023
+    100068: Log 024
+    100070: Log 025
+    100072: Log 026
+    100074: Log 027
+    100076: Log 028
+    100078: Log 029
+    100080: Log 030
+    100082: Object006
+    100084: //RootNode
+    100086: Torus005
+    100088: Torus006
+    100090: Torus007
+    100092: Torus008
+    100094: Torus009
+    100096: Torus010
+    100098: Torus011
+    100100: Torus012
+    100102: Torus013
+    100104: Torus014
+    100106: Torus015
+    100108: Torus016
+    100110: Torus021
+    100112: Torus022
+    100114: Torus023
+    100116: Torus024
+    100118: Torus025
+    100120: Torus026
+    100122: Torus027
+    100124: Torus028
+    100126: Torus029
+    100128: Torus030
+    100130: Torus031
+    100132: Torus032
+    100134: Torus033
+    100136: Torus034
+    100138: Torus035
+    100140: Torus036
+    100142: Torus037
+    100144: Torus038
+    100146: Torus039
+    100148: Torus040
+    100150: Torus041
+    100152: Torus042
+    100154: Torus043
+    100156: Torus044
+    400000: Box005
+    400002: Box006
+    400004: Box007
+    400006: brokenSailPole001
+    400008: Cone001
+    400010: Knast 004
+    400012: Knast 005
+    400014: Knast 006
+    400016: Knast 007
+    400018: Knast 008
+    400020: Knast 009
+    400022: Knast 010
+    400024: Knast 011
+    400026: Knast 012
+    400028: Knast 013
+    400030: Knast 014
+    400032: Knast 015
+    400034: Knast 016
+    400036: Log 008
+    400038: Log 009
+    400040: Log 010
+    400042: Log 011
+    400044: Log 012
+    400046: Log 013
+    400048: Log 014
+    400050: Log 015
+    400052: Log 016
+    400054: Log 017
+    400056: Log 018
+    400058: Log 019
+    400060: Log 020
+    400062: Log 021
+    400064: Log 022
+    400066: Log 023
+    400068: Log 024
+    400070: Log 025
+    400072: Log 026
+    400074: Log 027
+    400076: Log 028
+    400078: Log 029
+    400080: Log 030
+    400082: Object006
+    400084: //RootNode
+    400086: Torus005
+    400088: Torus006
+    400090: Torus007
+    400092: Torus008
+    400094: Torus009
+    400096: Torus010
+    400098: Torus011
+    400100: Torus012
+    400102: Torus013
+    400104: Torus014
+    400106: Torus015
+    400108: Torus016
+    400110: Torus021
+    400112: Torus022
+    400114: Torus023
+    400116: Torus024
+    400118: Torus025
+    400120: Torus026
+    400122: Torus027
+    400124: Torus028
+    400126: Torus029
+    400128: Torus030
+    400130: Torus031
+    400132: Torus032
+    400134: Torus033
+    400136: Torus034
+    400138: Torus035
+    400140: Torus036
+    400142: Torus037
+    400144: Torus038
+    400146: Torus039
+    400148: Torus040
+    400150: Torus041
+    400152: Torus042
+    400154: Torus043
+    400156: Torus044
+    2300000: Box005
+    2300002: Box006
+    2300004: Box007
+    2300006: brokenSailPole001
+    2300008: Knast 004
+    2300010: Knast 005
+    2300012: Knast 006
+    2300014: Knast 007
+    2300016: Knast 008
+    2300018: Knast 009
+    2300020: Knast 010
+    2300022: Knast 011
+    2300024: Knast 012
+    2300026: Knast 013
+    2300028: Knast 014
+    2300030: Knast 015
+    2300032: Knast 016
+    2300034: Log 008
+    2300036: Log 009
+    2300038: Log 010
+    2300040: Log 011
+    2300042: Log 012
+    2300044: Log 013
+    2300046: Log 014
+    2300048: Log 015
+    2300050: Log 016
+    2300052: Log 017
+    2300054: Log 018
+    2300056: Log 019
+    2300058: Log 020
+    2300060: Log 021
+    2300062: Log 022
+    2300064: Log 023
+    2300066: Log 024
+    2300068: Log 025
+    2300070: Log 026
+    2300072: Log 027
+    2300074: Log 028
+    2300076: Log 029
+    2300078: Log 030
+    2300080: Object006
+    2300082: Torus005
+    2300084: Torus006
+    2300086: Torus007
+    2300088: Torus008
+    2300090: Torus009
+    2300092: Torus010
+    2300094: Torus011
+    2300096: Torus012
+    2300098: Torus013
+    2300100: Torus014
+    2300102: Torus015
+    2300104: Torus016
+    2300106: Torus021
+    2300108: Torus022
+    2300110: Torus023
+    2300112: Torus024
+    2300114: Torus025
+    2300116: Torus026
+    2300118: Torus027
+    2300120: Torus028
+    2300122: Torus029
+    2300124: Torus030
+    2300126: Torus031
+    2300128: Torus032
+    2300130: Torus033
+    2300132: Torus034
+    2300134: Torus035
+    2300136: Torus036
+    2300138: Torus037
+    2300140: Torus038
+    2300142: Torus039
+    2300144: Torus040
+    2300146: Torus041
+    2300148: Torus042
+    2300150: Torus043
+    2300152: Torus044
+    3300000: Box005
+    3300002: Box006
+    3300004: Box007
+    3300006: brokenSailPole001
+    3300008: Knast 004
+    3300010: Knast 005
+    3300012: Knast 006
+    3300014: Knast 007
+    3300016: Knast 008
+    3300018: Knast 009
+    3300020: Knast 010
+    3300022: Knast 011
+    3300024: Knast 012
+    3300026: Knast 013
+    3300028: Knast 014
+    3300030: Knast 015
+    3300032: Knast 016
+    3300034: Log 008
+    3300036: Log 009
+    3300038: Log 010
+    3300040: Log 011
+    3300042: Log 012
+    3300044: Log 013
+    3300046: Log 014
+    3300048: Log 015
+    3300050: Log 016
+    3300052: Log 017
+    3300054: Log 018
+    3300056: Log 019
+    3300058: Log 020
+    3300060: Log 021
+    3300062: Log 022
+    3300064: Log 023
+    3300066: Log 024
+    3300068: Log 025
+    3300070: Log 026
+    3300072: Log 027
+    3300074: Log 028
+    3300076: Log 029
+    3300078: Log 030
+    3300080: Object006
+    3300082: Torus005
+    3300084: Torus006
+    3300086: Torus007
+    3300088: Torus008
+    3300090: Torus009
+    3300092: Torus010
+    3300094: Torus011
+    3300096: Torus012
+    3300098: Torus013
+    3300100: Torus014
+    3300102: Torus015
+    3300104: Torus016
+    3300106: Torus021
+    3300108: Torus022
+    3300110: Torus023
+    3300112: Torus024
+    3300114: Torus025
+    3300116: Torus026
+    3300118: Torus027
+    3300120: Torus028
+    3300122: Torus029
+    3300124: Torus030
+    3300126: Torus031
+    3300128: Torus032
+    3300130: Torus033
+    3300132: Torus034
+    3300134: Torus035
+    3300136: Torus036
+    3300138: Torus037
+    3300140: Torus038
+    3300142: Torus039
+    3300144: Torus040
+    3300146: Torus041
+    3300148: Torus042
+    3300150: Torus043
+    3300152: Torus044
+    4300000: Log 008
+    4300002: Log 009
+    4300004: Log 010
+    4300006: Log 011
+    4300008: Log 012
+    4300010: Log 013
+    4300012: Log 014
+    4300014: Box005
+    4300016: Torus005
+    4300018: Torus006
+    4300020: Torus007
+    4300022: Torus008
+    4300024: Torus009
+    4300026: Torus010
+    4300028: Torus011
+    4300030: Torus012
+    4300032: Torus013
+    4300034: Torus014
+    4300036: Torus015
+    4300038: Torus016
+    4300040: Box006
+    4300042: Torus021
+    4300044: Torus022
+    4300046: Torus023
+    4300048: Torus024
+    4300050: Torus025
+    4300052: Torus026
+    4300054: Torus027
+    4300056: Torus028
+    4300058: Torus029
+    4300060: Torus030
+    4300062: Torus031
+    4300064: Torus032
+    4300066: Knast 004
+    4300068: brokenSailPole001
+    4300070: Box007
+    4300072: Torus033
+    4300074: Torus034
+    4300076: Torus035
+    4300078: Torus036
+    4300080: Torus037
+    4300082: Torus038
+    4300084: Torus039
+    4300086: Torus040
+    4300088: Torus041
+    4300090: Torus042
+    4300092: Torus043
+    4300094: Torus044
+    4300096: Knast 005
+    4300098: Knast 006
+    4300100: Knast 007
+    4300102: Knast 008
+    4300104: Knast 009
+    4300106: Knast 010
+    4300108: Knast 011
+    4300110: Knast 012
+    4300112: Knast 013
+    4300114: Knast 014
+    4300116: Knast 015
+    4300118: Knast 016
+    4300120: Log 015
+    4300122: Log 016
+    4300124: Log 017
+    4300126: Log 018
+    4300128: Log 019
+    4300130: Log 020
+    4300132: Log 021
+    4300134: Log 022
+    4300136: Log 023
+    4300138: Log 024
+    4300140: Log 025
+    4300142: Log 026
+    4300144: Log 027
+    4300146: Log 028
+    4300148: Log 029
+    4300150: Log 030
+    4300152: Object006
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
