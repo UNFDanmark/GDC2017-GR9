@@ -48,7 +48,26 @@ public class Raft : MonoBehaviour {
 	void UpdateRotation() {
 		float forceX = Math.Abs(forces[0]) > nullifier ? (forces[0] - nullifier * Math.Sign(forces[0])) : 0; //makes sure to substract the nullifier
 		float forceZ = Math.Abs(forces[1]) > nullifier ? (forces[1] - nullifier * Math.Sign(forces[1])) : 0;
-		transform.Rotate(new Vector3(forceZ, 0, -forceX) * Time.deltaTime * (1 / RotateFactor), Space.World );
+		float curXpos = transform.eulerAngles.z;//thats right
+		float curZpos = -transform.eulerAngles.x;
+		//print(getRotation(5, 0));
+		transform.Rotate(new Vector3(forces[1], 0, -forces[0]) * Time.deltaTime * (1 / RotateFactor), Space.World);
+		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(0, 0, 1)), nullifier /120);
+
+	}
+
+	float getRotation(float force,float curPos) {
+		float rotate;
+		print(force.ToString() + " " + curPos.ToString());
+
+		if (curPos < 360 && curPos > 360-LoseRotation) {
+			float maxRotate = force * Time.deltaTime * (1 / RotateFactor);
+			rotate = maxRotate < 360 - curPos ? maxRotate : 360 - curPos;
+		} else {
+			float maxRotate = force * Time.deltaTime * (1 / RotateFactor);
+			rotate = maxRotate > curPos ? maxRotate : -curPos;
+		}
+		return rotate;
 	}
 
 	void UpdatePlaceInWater() {

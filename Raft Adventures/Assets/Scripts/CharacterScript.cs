@@ -28,9 +28,14 @@ public class CharacterScript : MonoBehaviour
     {
         Move();
     }
-    void Move()
-    {
-        thisRigidbody.velocity = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, thisRigidbody.velocity.y, Input.GetAxis("Vertical") * moveSpeed);
-    }
+	void Move() {
+		Vector3 movement = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, thisRigidbody.velocity.y, Input.GetAxis("Vertical") * moveSpeed);
+		thisRigidbody.velocity = movement;
+		if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * moveSpeed), 0.15f);
+
+		}
+	}
 }
+
 
