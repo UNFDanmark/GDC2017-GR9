@@ -4,13 +4,22 @@ using System.Collections.Generic;
 
 public class EnemyFactoryScript : MonoBehaviour {
     
-    public GameObject stone;
+    public GameObject SmallStone;
+	public GameObject MediumStone;
+	public GameObject LargeStone;
+	public GameObject HugeStone;
+
+	public float LightStoneConstant;
+	public float MediumStoneConstant;
+	public float LargetStoneConstant;
+	public float HugeStoneConstant;
+
 	List<GameObject> allEnemies = new List<GameObject>();
 	public int difficulty;
 	public GameObject getEnemy(){
 		//enemy instantiation and selection logic
 
-        GameObject thisEnemy = Instantiate(stone);
+        GameObject thisEnemy = Instantiate(HugeStone);
 		allEnemies.Add(thisEnemy);
 		return thisEnemy;
 

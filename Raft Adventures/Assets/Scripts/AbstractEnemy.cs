@@ -3,10 +3,11 @@ using System.Collections;
 
 public abstract class AbstractEnemy : MonoBehaviour {
     public abstract void Intro(float posX, float posZ);
-	public GameObject ShadowMaker;
+	GameObject Shadow;
+	private bool isShadow = false;
 	public float Mass {
 		get {
-			if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), transform.lossyScale.y / 2 + 1f, 1 << LayerMask.NameToLayer("Enemies") | 1 << LayerMask.NameToLayer("Raft"))) {
+			if (!isShadow && Physics.Raycast(transform.position, new Vector3(0, -1, 0), transform.lossyScale.y / 2 + 1f, 1 << LayerMask.NameToLayer("Enemies") | 1 << LayerMask.NameToLayer("Raft"))) {
 				return GetComponent<Rigidbody>().mass;
 			} else {
 				return 0;
@@ -17,18 +18,29 @@ public abstract class AbstractEnemy : MonoBehaviour {
 	void OnTriggerEnter(Collider water) {
 		Destroy(gameObject,0.1f);
 	}
-
-	void Start() { //write code to initialize an copy of this object on the raft, and set mesh rendere shadows to only shadows via recursion: http://answers.unity3d.com/questions/205391/how-to-get-list-of-child-game-objects.html
+	public void castShadowDown() {
 		RaycastHit hit;
-		if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, 20, 1 << LayerMask.NameToLayer("Default"))) {
-
-			//should be changed to object radius
-
+		if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, 20, 1 << LayerMask.NameToLayer("Raft")| 1 << LayerMask.NameToLayer("Water"))) {
+			Shadow = Instantiate(gameObject);
+			Shadow.transform.position = new Vector3(transform.position.x, transform.lossyScale.y / 2, transform.position.z);
+			Shadow.layer = LayerMask.NameToLayer("Shadow");
+			MeshRenderer CMR = Shadow.transform.GetChild(0).GetComponent<MeshRenderer>();
+			CMR.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly; //removes shadows
+			print(Mathf.Sqrt(2 * transform.position.y / -Physics.gravity.y));
+			Destroy(Shadow,Mathf.Sqrt(2*transform.position.y/-Physics.gravity.y));
 		}
 	}
 
-	void Update() {
+	void RemoveChildRenderer(GameObject curChild) {
+		MeshRenderer CMR = curChild.GetComponent<MeshRenderer>();
+		CMR.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly; //removes shadows
+		//int children = transform.childCount;
+		//for (int i = 0; i < children; i++) {
+			//print(transform.GetChild(i).gameObject);
+		//}
+	}
 
+	void Update() {
 	}
 }
 

@@ -20,7 +20,8 @@ public class EnemyControlScript : MonoBehaviour {
 			GameObject tempEnemy = factory.getEnemy();
 			float posX = Random.Range(-4.5f, 4.5f);
 			float posZ = Random.Range(-4.5f, 4.5f);
-			tempEnemy.GetComponent<AbstractEnemy>().Intro(posX,posZ); //activates the enemies entrance throug
+			tempEnemy.GetComponent<AbstractEnemy>().Intro(posX,posZ); //activates the enemies entrance
+			tempEnemy.GetComponent<AbstractEnemy>().castShadowDown();
 			lastSpawn = Time.timeSinceLevelLoad;
 		}
 	}
