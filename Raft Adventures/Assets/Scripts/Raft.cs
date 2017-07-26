@@ -6,7 +6,7 @@ using System;
 public class Raft : MonoBehaviour {
     //public GameObject StoneHitboxPrefab;
     private GameObject player;
-	private EnemyFactoryScript factory;
+	private EnemyControlScript factory;
 	public float TipLimit = 5;
 	float[] forces = new float[2];
 	float TotalWeight;
@@ -15,14 +15,16 @@ public class Raft : MonoBehaviour {
 	public float RotateFactor = 10;
 	public float LoseRotation = 10;
 
+	private Quaternion _facing;
+
     void Awake() {
         player = GameObject.Find("Character"); //gets acess to Character object
-		factory = GameObject.Find("EnemyFactory").GetComponent<EnemyFactoryScript>();
+		factory = GameObject.Find("EnemyControl").GetComponent<EnemyControlScript>();
 	}
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 	
 	// Update is called once per frame
@@ -46,8 +48,12 @@ public class Raft : MonoBehaviour {
 	}
 
 	void UpdateRotation() {
+		//print(forces[0].ToString() + " " + forces[1].ToString());
 		transform.Rotate(new Vector3(forces[1], 0, -forces[0]) * Time.deltaTime * (1 / RotateFactor), Space.World);
-		transform.rotation = Quaternion.LookRotation(Vector3.MoveTowards(transform.forward,new Vector3(0, 0, 1), nullifier * Time.deltaTime * (1 / RotateFactor)*6.28f/360));// pi FTW
+		float step = nullifier * Time.deltaTime * (1 / RotateFactor) * 6.28f / 360;
+
+		transform.rotation = Quaternion.LookRotation(Vector3.MoveTowards(transform.forward,new Vector3(0, 0, 1),step),transform.up);
+		transform.rotation = Quaternion.LookRotation(transform.forward, Vector3.MoveTowards(transform.up, new Vector3(0, 1, 0), step));
 	}
 
 	void UpdatePlaceInWater() {

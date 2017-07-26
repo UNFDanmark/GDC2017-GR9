@@ -24,7 +24,7 @@ GameObject:
   - 23: {fileID: 23000011620843718}
   - 54: {fileID: 54000010716120030}
   - 114: {fileID: 114000011027168844}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Small Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - 33: {fileID: 33000013351449762}
   - 23: {fileID: 23000010954457800}
   - 95: {fileID: 95000011236034000}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Small Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,6 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7899d76b8a0661e4483249d2b5461d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: {fileID: 1000010470223852, guid: 5c0957e0c11bd694aaa1e08c7b80404a, type: 2}
 --- !u!135 &135000013233607340
 SphereCollider:
   m_ObjectHideFlags: 1
