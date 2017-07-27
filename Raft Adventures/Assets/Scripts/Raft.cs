@@ -14,6 +14,9 @@ public class Raft : MonoBehaviour {
 	public float nullifier = 0;
 	public float RotateFactor = 10;
 	public float LoseRotation = 10;
+	public float[] musicChange;
+	public GameObject[] Music;
+	private bool active3 = false;
 
 	private Quaternion _facing;
 
@@ -35,11 +38,14 @@ public class Raft : MonoBehaviour {
 		UpdateRotation();
 		UpdatePlaceInWater();
 		checkLose();
+		UpdateMusic();
 	}
 
 	void checkLose() {
+		float xAsMinus = Mathf.Abs(transform.eulerAngles.x - 360) > transform.eulerAngles.x ? transform.eulerAngles.x : transform.eulerAngles.x - 360;
+		float zAsMinus = Mathf.Abs(transform.eulerAngles.z - 360) > transform.eulerAngles.z ? transform.eulerAngles.z : transform.eulerAngles.z - 360;
 		//print(transform.eulerAngles.x.ToString() + " " + transform.eulerAngles.z.ToString());
-		if (!((360 - LoseRotation < transform.eulerAngles.x || transform.eulerAngles.x < LoseRotation )&&( 360 - LoseRotation < transform.eulerAngles.z || transform.eulerAngles.z < LoseRotation))) {//fuck that
+		if (Mathf.Abs(xAsMinus)>LoseRotation || Mathf.Abs(zAsMinus) > LoseRotation){//fuck that
 			print("You Lose");
 		}
 		if (TotalWeight >= weightLimit) {
@@ -71,6 +77,23 @@ public class Raft : MonoBehaviour {
 		//print(forceX.ToString() + " " + forceZ.ToString());
 		return new float[] { forceX, forceZ };
 	}
+	void UpdateMusic() {
+
+		float xAsMinus = Mathf.Abs(transform.eulerAngles.x - 360) > transform.eulerAngles.x ? transform.eulerAngles.x : transform.eulerAngles.x - 360;
+		float zAsMinus = Mathf.Abs(transform.eulerAngles.z - 360) > transform.eulerAngles.z ? transform.eulerAngles.z : transform.eulerAngles.z - 360;
+		print(xAsMinus + " " + zAsMinus);
+
+		if (Mathf.Abs(xAsMinus) > musicChange[1] || Mathf.Abs(zAsMinus) > musicChange[1]) {
+			Music[1].SetActive(false);
+			Music[2].SetActive(true);
+			active3 = true;
+		}else if ((Mathf.Abs(xAsMinus) > musicChange[0]|| Mathf.Abs(zAsMinus) > musicChange[0]) && !active3) {
+			Music[0].SetActive(false);
+			Music[1].SetActive(true);
+		}
+		
+	}
+
 	float calcLoad(List<GameObject> allEnemies) {
 		float tempMass = 0;
 		foreach(GameObject GO in allEnemies) {
