@@ -33,15 +33,6 @@ public abstract class AbstractEnemy : MonoBehaviour {
 			Destroy(Shadow,Mathf.Sqrt(2*transform.position.y/-Physics.gravity.y));
 		}
 	}
-
-	void RemoveChildRenderer(GameObject curChild) {
-		MeshRenderer CMR = curChild.GetComponent<MeshRenderer>();
-		CMR.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly; //removes shadows
-		//int children = transform.childCount;
-		//for (int i = 0; i < children; i++) {
-			//print(transform.GetChild(i).gameObject);
-		//}
-	}
 	
 }
 
