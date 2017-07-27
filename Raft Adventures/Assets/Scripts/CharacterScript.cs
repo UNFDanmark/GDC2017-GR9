@@ -19,7 +19,10 @@ public class CharacterScript : MonoBehaviour
 
     }
 	// Update is called once per frame
+	void Update()
+    {
 
+    }
 
     void FixedUpdate()
     {
@@ -30,6 +33,7 @@ public class CharacterScript : MonoBehaviour
 		thisRigidbody.velocity = movement;
 		if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * moveSpeed), 0.15f);
+
 		}
 	}
 }
