@@ -1113,7 +1113,7 @@ MonoBehaviour:
   - {fileID: 1000010632350468, guid: 24e56ddad40b3b145a943c1db6b87a84, type: 2}
   - {fileID: 1000012554938852, guid: 6e59bd119958a994788158c11064a16f, type: 2}
   - {fileID: 1000013561641630, guid: 0ec485f3f2641434482d52dea9700db1, type: 2}
-  - {fileID: 1000011078335516, guid: 3a7f46a1667a5d54e934cc0b535724a5, type: 2}
+  - {fileID: 1000012174004150, guid: 3a7f46a1667a5d54e934cc0b535724a5, type: 2}
   StoneConstants:
   - 100
   - 10

@@ -28,8 +28,10 @@ public abstract class AbstractEnemy : MonoBehaviour {
 			Shadow = Instantiate(gameObject);
 			Shadow.transform.position = new Vector3(transform.position.x, transform.lossyScale.y / 2, transform.position.z);
 			Shadow.layer = LayerMask.NameToLayer("Shadow");
-			MeshRenderer CMR = Shadow.transform.GetChild(0).GetComponent<MeshRenderer>();
-			CMR.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly; //removes shadows	
+			foreach(Transform child in Shadow.transform) {
+				MeshRenderer CMR = child.gameObject.GetComponent<MeshRenderer>();
+				CMR.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly; //removes shadows
+			}
 			Destroy(Shadow,Mathf.Sqrt(2*transform.position.y/-Physics.gravity.y));
 		}
 	}
