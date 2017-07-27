@@ -14,12 +14,13 @@ public class EnemyControlScript : MonoBehaviour {
 	public float WeightFactor = 0.75f;
 	public Raft raft;
 	private bool stopped = false;
-	public GameObject[] stones = new GameObject[4];
+	public GameObject[] stones = new GameObject[5];
 
-	public float[] StoneConstants = {100,10,0.5f,0.02f};
+	public float[] StoneConstants = {100,10,0.5f,0.02f,0.005f};
+	public float[] stoneMin = { 1000, 650, 500, 250, 125 };
 
-	private float[] PrimeMultiplier = { 1.5f,1.3f,1.15f,1};
-	private float[] StoneChance = new float[4];
+	private float[] PrimeMultiplier = { 1.5f,1.3f,1.15f,1,1};
+	private float[] StoneChance = new float[5];
 	List<GameObject> allEnemies = new List<GameObject>();
 
 	private float[][] fields = new float[][]{ 
@@ -27,10 +28,10 @@ public class EnemyControlScript : MonoBehaviour {
 		//new float[]{-4.5f, 4.5f, 1.5f, 4.5f }, 
 		//new float[]{-4.5f, -1.5f, -4.5f, 4.5f }, 
 		//new float[]{-4.5f, -1.5f, -4.5f, 4.5f },
-		new float[]{-4.5f, 1.5f ,-4.5f, 1.5f}, 
-		new float[]{1.5f, 4.5f ,-4.5f, 1.5f}, 
-		new float[]{-4.5f, 1.5f ,1.5f, 4.5f}, 
-		new float[]{1.5f, 4.5f ,1.5f, 4.5f} 
+		new float[]{-4.5f, 2.5f ,-4.5f, 2.5f}, 
+		new float[]{2.5f, 4.5f ,-4.5f, 2.5f}, 
+		new float[]{-4.5f, 2.5f ,2.5f, 4.5f}, 
+		new float[]{2.5f, 4.5f ,2.5f, 4.5f} 
 	};
 
 	void Start() {
@@ -54,7 +55,7 @@ public class EnemyControlScript : MonoBehaviour {
 		int biggestEnemyType = getEnemyType();
 		float CurWeight = 0;
 		int i = biggestEnemyType;
-		maxWeight = Mathf.Min(maxWeight, raft.weightLimit);
+		maxWeight = Mathf.Min(maxWeight, raft.weightLimit*4f/5f);
 
 		while(CurWeight+1.1 < maxWeight) {
 			float stoneWeight = stones[i].GetComponent<Rigidbody>().mass;
@@ -78,7 +79,7 @@ public class EnemyControlScript : MonoBehaviour {
 
 	void updateValues() {
 		for(int i=0;i<StoneChance.Length;i++) {
-			StoneChance[i] = StoneConstants[i]*Mathf.Pow(Time.timeSinceLevelLoad,i+1);
+			StoneChance[i] = Mathf.Min(StoneConstants[i]*Mathf.Pow(Time.timeSinceLevelLoad,i+1),stoneMin[i]);
 		}
 		EnemyCD = 8 - (10 / ((Time.timeSinceLevelLoad + 0.35f) + 0.6f * (Time.timeSinceLevelLoad + 0.35f) * Mathf.Cos((Time.timeSinceLevelLoad + 0.35f) / 2))) - 4 * Mathf.Log((Time.timeSinceLevelLoad + 0.35f), 10);
 		WaveCD = EnemyCD * 10;
