@@ -103,7 +103,6 @@ GameObject:
   - 23: {fileID: 12084157}
   - 54: {fileID: 12084156}
   - 114: {fileID: 12084160}
-  - 95: {fileID: 12084161}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -200,25 +199,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  ModelAnimator: {fileID: 1507366597}
   crossfadeTime: 0.1
   cam: {fileID: 556426427}
---- !u!95 &12084161
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 12084154}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6ae1a51e174b3a340b237ffc7ed65d39, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &45272288
 Prefab:
   m_ObjectHideFlags: 0
@@ -715,7 +698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TipLimit: 5
-  weightLimit: 50
+  weightLimit: 65
   nullifier: 5
   RotateFactor: 10
   LoseRotation: 10
@@ -1153,6 +1136,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4000014139348558, guid: 44d33b3b1a0906341ae84b9ba4ef55d9,
     type: 2}
   m_PrefabInternal: {fileID: 45272288}
+--- !u!95 &1507366597 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: 28d9c32a6d5195b4ab3b2c4c8ed1831d,
+    type: 3}
+  m_PrefabInternal: {fileID: 1551272253}
 --- !u!1001 &1551272253
 Prefab:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class CharacterScript : MonoBehaviour
     //start of changeble values from unity. Remember to reset
     public float moveSpeed = 2;
     private Rigidbody thisRigidbody;
-	private Animator ModelAnimator;
+	public Animator ModelAnimator;
 	public float crossfadeTime = 0.1f;
 	public GameObject cam;
 	bool Running = false;
@@ -15,7 +15,7 @@ public class CharacterScript : MonoBehaviour
     void Awake()
     {
         thisRigidbody = GetComponent<Rigidbody>();
-		ModelAnimator = GameObject.Find("Charactor").GetComponent<Animator>();
+		//ModelAnimator = GameObject.Find("Charactor").GetComponent<Animator>();
     }
 
     // Use this for initialization
@@ -35,10 +35,15 @@ public class CharacterScript : MonoBehaviour
 		thisRigidbody.velocity = sumVec;
 		if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0) {
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * moveSpeed), 0.15f);
-			ModelAnimator.CrossFade("Run", crossfadeTime);
+			if (!Running) {
+				ModelAnimator.Play("Run");
+				Running = true;
+			}
 		} else {
-			ModelAnimator.CrossFade("Idle", crossfadeTime);
-
+			if (Running) {
+				ModelAnimator.Play("Idle");
+				Running = false;
+			}
 		}
 	}
 }
