@@ -53,11 +53,12 @@ public class Raft : MonoBehaviour {
 		float xAsMinus = Mathf.Abs(transform.eulerAngles.x - 360) > transform.eulerAngles.x ? transform.eulerAngles.x : transform.eulerAngles.x - 360;
 		float zAsMinus = Mathf.Abs(transform.eulerAngles.z - 360) > transform.eulerAngles.z ? transform.eulerAngles.z : transform.eulerAngles.z - 360;
 		//print(transform.eulerAngles.x.ToString() + " " + transform.eulerAngles.z.ToString());
-		if (Mathf.Abs(xAsMinus)>LoseRotation || Mathf.Abs(zAsMinus) > LoseRotation|| TotalWeight > weightLimit) {//fuck that
+		if (Mathf.Abs(xAsMinus)>LoseRotation || Mathf.Abs(zAsMinus) > LoseRotation|| TotalWeight > weightLimit) {
 			dead = true;
 			factory.Stop();
 			MusicPlayer.GetComponent<MusicPlayerScript>().IPlayNR(3);
 			Score.GetComponent<ScoreSystemScript>().die();
+			ScoreSystemScript.tipped = !(TotalWeight > weightLimit);
 			DeathTime = Time.time;
 		}
 	}

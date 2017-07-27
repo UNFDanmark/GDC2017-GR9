@@ -84,95 +84,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle->Run
-      takeName: Take 001
-      firstFrame: 10
-      lastFrame: 24
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Charactor
-        weight: 1
-      - path: Masterbone
-        weight: 1
-      - path: Masterbone/L_LegBone 1
-        weight: 1
-      - path: Masterbone/L_LegBone 1/L_LegBone2
-        weight: 1
-      - path: Masterbone/L_LegBone 1/L_LegBone2/L_FootBone
-        weight: 1
-      - path: Masterbone/R_LegBone1
-        weight: 1
-      - path: Masterbone/R_LegBone1/R_LegBone 2
-        weight: 1
-      - path: Masterbone/R_LegBone1/R_LegBone 2/R_FootBone
-        weight: 1
-      - path: Masterbone/SpineBone 1
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4/L_ShoulderBone
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4/L_ShoulderBone/L_ArmBone
-          1
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4/L_ShoulderBone/L_ArmBone
-          1/L_ArmBone 2
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4/L_ShoulderBone/L_ArmBone
-          1/L_ArmBone 2/L_HandBone
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4/R_ShoulderBone
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4/R_ShoulderBone/R_ArmBone
-          1
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4/R_ShoulderBone/R_ArmBone
-          1/R_ArmBone 2
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4/R_ShoulderBone/R_ArmBone
-          1/R_ArmBone 2/R_HandBone
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4/SpineBone
-          5
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4/SpineBone
-          5/SpineNub
-        weight: 1
-      - path: Masterbone/SpineBone 1/SpineBone 2/SpineBone 3/SpineBone 4/SpineBone
-          5/SpineNub/Hat
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: Run
       takeName: Take 001
       firstFrame: 24
-      lastFrame: 38
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

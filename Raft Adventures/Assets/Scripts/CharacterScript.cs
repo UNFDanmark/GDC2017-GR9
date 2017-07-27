@@ -10,6 +10,7 @@ public class CharacterScript : MonoBehaviour
 	private Animator ModelAnimator;
 	public float crossfadeTime = 0.1f;
 	public GameObject cam;
+	bool Running = false;
 
     void Awake()
     {
@@ -37,6 +38,7 @@ public class CharacterScript : MonoBehaviour
 			ModelAnimator.CrossFade("Run", crossfadeTime);
 		} else {
 			ModelAnimator.CrossFade("Idle", crossfadeTime);
+
 		}
 	}
 }

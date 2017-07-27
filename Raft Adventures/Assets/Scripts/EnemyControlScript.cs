@@ -55,8 +55,7 @@ public class EnemyControlScript : MonoBehaviour {
 		int biggestEnemyType = getEnemyType();
 		float CurWeight = 0;
 		int i = biggestEnemyType;
-		maxWeight = Mathf.Min(maxWeight, raft.weightLimit*4f/5f);
-
+		maxWeight = Mathf.Min(maxWeight, raft.weightLimit*1f/2f);
 		while(CurWeight+1.1 < maxWeight) {
 			float stoneWeight = stones[i].GetComponent<Rigidbody>().mass;
 			while (CurWeight+stoneWeight<maxWeight) {

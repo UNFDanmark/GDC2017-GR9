@@ -8,6 +8,7 @@ public class ScoreSystemScript : MonoBehaviour {
 	public static int score = 0;
 	private static Text ScoreText;
 	public static bool dead = false;
+	public static bool tipped;
 	// Use this for initialization
 	void Start() {
 		score = 0;
@@ -34,6 +35,12 @@ public class ScoreSystemScript : MonoBehaviour {
 		if (scene.name.Equals("Final Score")) {
 			ScoreText = GameObject.Find("Text").GetComponent<Text>();
 			ScoreText.text = "Final Score: " + score;
+			Text reasonText = GameObject.Find("Lose Reason").GetComponent<Text>();
+			if (tipped) {
+				reasonText.text = "Your raft tipped";
+			} else {
+				reasonText.text = "Your raft couldn't take anymore weight";
+			}
 		}
 	}
 
