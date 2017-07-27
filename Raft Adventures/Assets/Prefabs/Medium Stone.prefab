@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: {fileID: 1000010470223852, guid: 5c0957e0c11bd694aaa1e08c7b80404a, type: 2}
+  hit: {fileID: 8300000, guid: 8fbbd8eefda0b664abe8d882e1db6008, type: 3}
 --- !u!135 &135000013121863690
 SphereCollider:
   m_ObjectHideFlags: 1
