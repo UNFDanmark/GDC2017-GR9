@@ -2,8 +2,16 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.IO;
+using System;
 
 public class ScoreSystemScript : MonoBehaviour {
+
+	struct highscore {
+		public int score;
+		public string name;
+	}
 
 	public static int score = 0;
 	private static Text ScoreText;
@@ -36,6 +44,7 @@ public class ScoreSystemScript : MonoBehaviour {
 			ScoreText = GameObject.Find("Text").GetComponent<Text>();
 			ScoreText.text = "Final Score: " + score;
 			Text reasonText = GameObject.Find("Lose Reason").GetComponent<Text>();
+			getScore();
 			if (tipped) {
 				reasonText.text = "Your raft tipped";
 			} else {
@@ -52,6 +61,27 @@ public class ScoreSystemScript : MonoBehaviour {
 	}
 	public void die() {
 		dead = true;
+	}
+
+	void getScore() {
+		List<highscore> highscores = new List<highscore>();
+		using (var reader = new StreamReader(@"highscore.txt")) {
+
+			while (!reader.EndOfStream) {
+				var line = reader.ReadLine();
+				var values = line.Split(',');
+				highscore oldScore;
+				oldScore.score = Int32.Parse(values[0]);
+				oldScore.name = values[1];
+
+				highscores.Add(oldScore);
+
+			}
+		}
+		foreach (highscore HS in highscores) {
+			print(HS.name);
+		}
+
 	}
 
 }

@@ -1,0 +1,5 @@
+3000, hejse
+2000, Fred
+1000, skov
+500, super
+400,dejlig
