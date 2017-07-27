@@ -12,7 +12,7 @@ public class StoneHitboxScript : AbstractEnemy {
     }
 
 	protected override void Score() {
-	print(score);
+	    //print(score);
 		score.GetComponent<ScoreSystemScript>().IncreaseScore((int)GetComponent<Rigidbody>().mass * 50);
 	}
 }
