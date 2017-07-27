@@ -13,7 +13,7 @@ public class EnemyControlScript : MonoBehaviour {
 	private float maxWeight = 1.5f;
 	public float WeightFactor = 0.75f;
 	public Raft raft;
-
+	private bool stopped = false;
 	public GameObject[] stones = new GameObject[4];
 
 	public float[] StoneConstants = {100,10,0.5f,0.02f};
@@ -38,6 +38,7 @@ public class EnemyControlScript : MonoBehaviour {
 	}
 	// Update is called once per frame
 	 void Update () {
+		if (stopped) return;
 		updateValues();
 		sendWave();
 		sendEnemy();
@@ -113,6 +114,9 @@ public class EnemyControlScript : MonoBehaviour {
 	public List<GameObject> getAllEnemies() {
 		UpdateList();
 		return allEnemies;
+	}
+	public void Stop() {
+		stopped = true;
 	}
 }
 

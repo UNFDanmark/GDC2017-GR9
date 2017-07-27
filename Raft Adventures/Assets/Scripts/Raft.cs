@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Raft : MonoBehaviour {
     //public GameObject StoneHitboxPrefab;
@@ -15,15 +16,17 @@ public class Raft : MonoBehaviour {
 	public float RotateFactor = 10;
 	public float LoseRotation = 10;
 	public float[] musicChange;
-	public GameObject[] Music;
 	private bool active3 = false;
-
-	private Quaternion _facing;
-
+	public GameObject MusicPlayer;
+	public GameObject Score;
+	private bool dead;
+	private float DeathTime;
+	public float DeathDelay = 2;
     void Awake() {
         player = GameObject.Find("Character"); //gets acess to Character object
 		factory = GameObject.Find("EnemyControl").GetComponent<EnemyControlScript>();
-		Music[0] = GameObject.Find("Level1Music");
+		MusicPlayer = GameObject.Find("Music Player");
+		Score = GameObject.Find("Score System");
 	}
 
 	// Use this for initialization
@@ -33,24 +36,29 @@ public class Raft : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		List<GameObject> allEnemies = factory.getAllEnemies();
-		forces = calcStability(allEnemies);
-		TotalWeight = calcLoad(allEnemies);
-		UpdateRotation();
-		UpdatePlaceInWater();
-		checkLose();
-		UpdateMusic();
+		if (!dead) {
+			List<GameObject> allEnemies = factory.getAllEnemies();
+			forces = calcStability(allEnemies);
+			TotalWeight = calcLoad(allEnemies);
+			UpdateRotation();
+			UpdatePlaceInWater();
+			checkLose();
+			UpdateMusic();
+		} else {
+			die();
+		}
 	}
 
 	void checkLose() {
 		float xAsMinus = Mathf.Abs(transform.eulerAngles.x - 360) > transform.eulerAngles.x ? transform.eulerAngles.x : transform.eulerAngles.x - 360;
 		float zAsMinus = Mathf.Abs(transform.eulerAngles.z - 360) > transform.eulerAngles.z ? transform.eulerAngles.z : transform.eulerAngles.z - 360;
 		//print(transform.eulerAngles.x.ToString() + " " + transform.eulerAngles.z.ToString());
-		if (Mathf.Abs(xAsMinus)>LoseRotation || Mathf.Abs(zAsMinus) > LoseRotation){//fuck that
-			print("You Lose");
-		}
-		if (TotalWeight >= weightLimit) {
-			print("You Lose2");
+		if (Mathf.Abs(xAsMinus)>LoseRotation || Mathf.Abs(zAsMinus) > LoseRotation|| TotalWeight > weightLimit) {//fuck that
+			dead = true;
+			factory.Stop();
+			MusicPlayer.GetComponent<MusicPlayerScript>().IPlayNR(3);
+			Score.GetComponent<ScoreSystemScript>().die();
+			DeathTime = Time.time;
 		}
 	}
 
@@ -82,15 +90,11 @@ public class Raft : MonoBehaviour {
 
 		float xAsMinus = Mathf.Abs(transform.eulerAngles.x - 360) > transform.eulerAngles.x ? transform.eulerAngles.x : transform.eulerAngles.x - 360;
 		float zAsMinus = Mathf.Abs(transform.eulerAngles.z - 360) > transform.eulerAngles.z ? transform.eulerAngles.z : transform.eulerAngles.z - 360;
-		print(xAsMinus + " " + zAsMinus);
 
 		if (Mathf.Abs(xAsMinus) > musicChange[1] || Mathf.Abs(zAsMinus) > musicChange[1]) {
-			Music[1].SetActive(false);
-			Music[2].SetActive(true);
-			active3 = true;
+			MusicPlayer.GetComponent<MusicPlayerScript>().PlayNR(2);
 		}else if ((Mathf.Abs(xAsMinus) > musicChange[0]|| Mathf.Abs(zAsMinus) > musicChange[0]) && !active3) {
-			Music[0].SetActive(false);
-			Music[1].SetActive(true);
+			MusicPlayer.GetComponent<MusicPlayerScript>().PlayNR(1);
 		}
 		
 	}
@@ -101,5 +105,11 @@ public class Raft : MonoBehaviour {
 			tempMass +=GO.GetComponent<AbstractEnemy>().Mass;
 		}
 		return tempMass;
+	}
+	void die() {
+		transform.Translate(new Vector3(0, -2, 0) * Time.deltaTime);
+		if(Time.time-DeathTime > DeathDelay) {
+			SceneManager.LoadScene("Final Score");
+		}
 	}
 }
