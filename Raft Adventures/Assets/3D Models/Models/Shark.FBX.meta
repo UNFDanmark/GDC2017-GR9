@@ -9,19 +9,24 @@ ModelImporter:
     100002: Shark
     100004: Shark Eye
     100006: Object
+    100008: Eye
     400000: //RootNode
     400002: Shark
     400004: Shark Eye
     400006: Object
+    400008: Eye
     2300000: Shark
     2300002: Shark Eye
     2300004: Object
+    2300006: Eye
     3300000: Shark
     3300002: Shark Eye
     3300004: Object
+    3300006: Eye
     4300000: Shark
     4300002: Shark Eye
     4300004: Object
+    4300006: Eye
   materials:
     importMaterials: 1
     materialName: 0
