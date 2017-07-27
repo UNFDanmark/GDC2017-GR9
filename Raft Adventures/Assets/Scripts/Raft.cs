@@ -23,6 +23,7 @@ public class Raft : MonoBehaviour {
     void Awake() {
         player = GameObject.Find("Character"); //gets acess to Character object
 		factory = GameObject.Find("EnemyControl").GetComponent<EnemyControlScript>();
+		Music[0] = GameObject.Find("Level1Music");
 	}
 
 	// Use this for initialization

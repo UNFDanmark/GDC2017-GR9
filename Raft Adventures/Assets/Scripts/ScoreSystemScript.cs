@@ -1,26 +1,40 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ScoreSystemScript : MonoBehaviour {
 
-	private bool old = false;
-	private int score = 0;
+	public static int score = 0;
+	private static Text ScoreText;
 	// Use this for initialization
-	void Start () {
-		//DontDestroyOnLoad(gameObject);
-		if(old && GameObject.FindGameObjectsWithTag("Score System").Length > 1) {
+	void Start() {
+		score = 0;
+		DontDestroyOnLoad(gameObject);
+		if (GameObject.FindGameObjectsWithTag("Score System").Length > 1) {
 			Destroy(gameObject);
 		}
-		old = true;
-	
+		ScoreText = GameObject.Find("Text").GetComponent<Text>();
 	}
-	
 
-	// Update is called once per frame
+	void OnEnable() {
+		SceneManager.sceneLoaded += OnSceneLoaded;
+	}
+
+	void OnDisable() {
+		SceneManager.sceneLoaded -= OnSceneLoaded;
+	}
+
+	void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+		ScoreText = GameObject.Find("Text").GetComponent<Text>();
+		print(ScoreText.text);
+	}
+
 	public void IncreaseScore(int TBI) {
-		print(score);
-		score += TBI;
-	}
-	
-}
 
+		score += TBI;
+		ScoreText.text = "Score: " + score;
+		print(ScoreText.text);
+	}
+
+}
