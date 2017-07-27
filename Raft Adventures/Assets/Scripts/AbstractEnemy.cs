@@ -3,6 +3,7 @@ using System.Collections;
 
 public abstract class AbstractEnemy : MonoBehaviour {
     public abstract void Intro(float posX, float posZ);
+	protected abstract void Score();
 	GameObject Shadow;
 	private bool isShadow = false;
 	public float Mass {
@@ -16,7 +17,10 @@ public abstract class AbstractEnemy : MonoBehaviour {
 	}//makes sure it doesnt count without touching the raft
 
 	void OnTriggerEnter(Collider water) {
+		//print("hi");
+		Score();
 		Destroy(gameObject,0.1f);
+		
 	}
 	public void castShadowDown() {
 		RaycastHit hit;
@@ -25,8 +29,7 @@ public abstract class AbstractEnemy : MonoBehaviour {
 			Shadow.transform.position = new Vector3(transform.position.x, transform.lossyScale.y / 2, transform.position.z);
 			Shadow.layer = LayerMask.NameToLayer("Shadow");
 			MeshRenderer CMR = Shadow.transform.GetChild(0).GetComponent<MeshRenderer>();
-			CMR.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly; //removes shadows
-			print(Mathf.Sqrt(2 * transform.position.y / -Physics.gravity.y));
+			CMR.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly; //removes shadows	
 			Destroy(Shadow,Mathf.Sqrt(2*transform.position.y/-Physics.gravity.y));
 		}
 	}
@@ -39,9 +42,7 @@ public abstract class AbstractEnemy : MonoBehaviour {
 			//print(transform.GetChild(i).gameObject);
 		//}
 	}
-
-	void Update() {
-	}
+	
 }
 
 
