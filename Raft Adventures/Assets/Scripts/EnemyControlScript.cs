@@ -81,6 +81,7 @@ public class EnemyControlScript : MonoBehaviour {
 			StoneChance[i] = Mathf.Min(StoneConstants[i]*Mathf.Pow(Time.timeSinceLevelLoad,i+1),stoneMin[i]);
 		}
 		EnemyCD = 8 - (10 / ((Time.timeSinceLevelLoad + 0.35f) + 0.6f * (Time.timeSinceLevelLoad + 0.35f) * Mathf.Cos((Time.timeSinceLevelLoad + 0.35f) / 2))) - 4 * Mathf.Log((Time.timeSinceLevelLoad + 0.35f), 10);
+		EnemyCD = Mathf.Max(EnemyCD, 0.3f);
 		WaveCD = EnemyCD * 10;
 		
 

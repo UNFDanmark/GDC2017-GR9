@@ -60,6 +60,7 @@ public class Raft : MonoBehaviour {
 			Score.GetComponent<ScoreSystemScript>().die();
 			ScoreSystemScript.tipped = !(TotalWeight > weightLimit);
 			DeathTime = Time.time;
+			GetComponent<AudioSource>().Play();
 		}
 	}
 
@@ -73,7 +74,7 @@ public class Raft : MonoBehaviour {
 	}
 
 	void UpdatePlaceInWater() {
-		Vector3 moveToPoint = new Vector3(transform.position.x, -(TotalWeight / weightLimit) * transform.lossyScale.y/2, transform.position.z);
+		Vector3 moveToPoint = new Vector3(transform.position.x, -(TotalWeight / weightLimit) * transform.lossyScale.y/1.1f, transform.position.z);
 		transform.position = Vector3.MoveTowards(transform.position, moveToPoint, 0.05f*Time.deltaTime);
 	}
 	float[] calcStability(List<GameObject> allEnemies) {
@@ -91,10 +92,10 @@ public class Raft : MonoBehaviour {
 
 		float xAsMinus = Mathf.Abs(transform.eulerAngles.x - 360) > transform.eulerAngles.x ? transform.eulerAngles.x : transform.eulerAngles.x - 360;
 		float zAsMinus = Mathf.Abs(transform.eulerAngles.z - 360) > transform.eulerAngles.z ? transform.eulerAngles.z : transform.eulerAngles.z - 360;
-
+		
 		if (Mathf.Abs(xAsMinus) > musicChange[1] || Mathf.Abs(zAsMinus) > musicChange[1]) {
 			MusicPlayer.GetComponent<MusicPlayerScript>().PlayNR(2);
-		}else if ((Mathf.Abs(xAsMinus) > musicChange[0]|| Mathf.Abs(zAsMinus) > musicChange[0]) && !active3) {
+		}else if ((Mathf.Abs(xAsMinus) > musicChange[0]|| Mathf.Abs(zAsMinus) > musicChange[0])) {
 			MusicPlayer.GetComponent<MusicPlayerScript>().PlayNR(1);
 		}
 		
